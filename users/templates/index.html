@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users With Templates</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        .table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+        table {
+            width: 50%;
+            padding: 10px;
+            border: 2px solid black;
+        }
+        td {
+            border: 1px solid black;
+            padding: 20px;
+        }
+        .tr {
+            border: 1px solid black;
+        }
+        .border {
+            width: 70%;
+            border-top: 2px solid black;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+        display: flex;
+        width: 417px;
+        margin: 0 auto;
+        justify-content: space-evenly;
+        padding: 10px;
+        }
+        input{
+        width: 100px;
+        }
+
+        .input{
+        width: 200px;
+        display: flex;
+        justify-content: space-between;
+        padding: 4px;
+        }
+        button{
+        margin: 13px auto;
+        box-shadow: 4px 3px black;
+        }
+        
+
+
+    </style>
+</head>
+<body>
+    <h1>All the Users</h1>
+    <div class="table">
+    <table>
+        <tr class="tr">
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Age</td>
+        </tr>
+
+        {% for i in users %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.first_name}}</td>
+            <td>{{i.last_name}}</td>
+            <td>{{i.email_address}}</td>
+            <td>{{i.age}}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <br>
+    <div class="border"></div>
+</form>
+<h2>Add a User</h2>
+<form action="/process" method="post">
+    {% csrf_token %}
+    <div>
+    <div class="input">
+        <label>First Name</label>
+        <input type="text" name="firstName">
+    </div>
+    <div class="input">
+        <label>Email</label>
+        <input type="text" name="email">
+    </div>
+    </div>
+    <div>
+    <div class="input">
+        <label>Last Name</label>
+        <input type="text" name="lastName">
+    </div>
+
+    <div class="input">
+        <label>Age</label>
+        <input type="text" name="age">
+    </div>
+    <button type="submit">Add</button>
+</div>
+
+</form>
+</body>
+</html>
